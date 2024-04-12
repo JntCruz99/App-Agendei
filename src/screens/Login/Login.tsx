@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
 import styles from '../Login/Style';
 import LoginInput from '../../components/loginInput/LoginInput';
 import Logo from '../../components/logoContainer/Logo'
-import FooterHome from "../../components/footerHome/FooterHome";
+import FooterLogin from "../../components/footerLogin/FooterLogin";
 
 
 export default function Home({ navigation }:any) {
@@ -18,7 +18,7 @@ export default function Home({ navigation }:any) {
             </View>
 
             <View style={styles.footerContainer}>
-                <FooterHome />
+                <FooterLogin />
             </View>
             <StatusBar style="light" />
         </View>

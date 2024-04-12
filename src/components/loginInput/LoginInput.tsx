@@ -1,7 +1,8 @@
-import { View, Text, TextInput, Pressable, Alert } from 'react-native'
+import { View, Text, TextInput, Pressable, Alert, Image } from 'react-native'
 import React, { useState } from 'react'
 import { styles } from './Style';
 import { useForm, Controller } from "react-hook-form"
+import warnIncon from '../../../assets/warn-icon.png'
 
 
 
@@ -23,13 +24,25 @@ function LoginInput({ navigation }: any) {
   })
   const onSubmit = (data: any) => {
     setButtonPress(false);
-    console.log('cheafou');
-
+    navigation.navigate('Home');
+    /*
     if (data.email === 'jonatascruz.99@gmail.com' && data.senha === 'jonatas123') {
+
       navigation.navigate('Home');
+
     } else {
-      console.log('Credenciais inválidas');
+      Alert.alert(
+        'Credenciais Invalidas',
+        'Email ou senha são invalidas',
+        [
+          {
+            text: 'OK'
+          },
+        ],
+        { cancelable: false }
+      );
     }
+    */
   }
 
   const handlePressOut = () => {
@@ -37,7 +50,7 @@ function LoginInput({ navigation }: any) {
   };
 
   return (
-    <View>
+    <>
       <Controller
         control={control}
         rules={{
@@ -74,11 +87,29 @@ function LoginInput({ navigation }: any) {
         defaultValue=""
       />
       {(errors.senha || errors.email) &&
-        <Text
+        <View
           style={{
-            color: 'red'
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginTop: 7
           }}
-        >Preencha todos os campos</Text>
+        >
+          <Image
+            source={warnIncon}
+            style={{
+              width: 32,
+              height: 32,
+            }}
+          />
+          <Text
+            style={{
+              color: 'red',
+            }}
+          >Preencha todos os campos</Text>
+
+        </View>
+
       }
       <Pressable
         style={buttonPress ? styles.button : styles.buttonPress}
@@ -87,7 +118,7 @@ function LoginInput({ navigation }: any) {
       >
         <Text style={{ color: 'white', fontWeight: 'bold' }} >Acessar</Text>
       </Pressable>
-    </View>
+    </>
   )
 }
 

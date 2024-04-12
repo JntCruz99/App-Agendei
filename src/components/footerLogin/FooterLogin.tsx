@@ -12,9 +12,8 @@ const FooterHome = () => {
     const handlePressOut = () => {
         setButtonPress(true);
     };
-//buttonPress ? styles.button : styles.buttonPress
     return (
-        <View>
+        <>
             <Pressable
                 style={buttonPress? styles.footerContainer : styles.footerContainerPress}
                 onPressIn={handlePressIn}
@@ -25,7 +24,7 @@ const FooterHome = () => {
                     color: '#A0A0A0'
                 }}>Não tenho uma conta. Toque para criar uma agora.</Text>
             </Pressable>
-        </View>
+        </>
     )
 }
 

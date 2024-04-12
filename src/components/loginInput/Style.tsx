@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   input:{
-    backgroundColor:'#F1F5F4',
+    backgroundColor:'#E1E5E4',
     paddingVertical:13,
     width: '100%',
     marginTop:16,
