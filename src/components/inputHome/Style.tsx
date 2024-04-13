@@ -18,10 +18,14 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         borderColor: '#ECECEC',
         justifyContent: 'center',
-        borderWidth: 2,
+        borderWidth: 1.5,
         borderRadius: 20,
         backgroundColor: '#E1E5E4',
         marginTop: 16,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 2
     },
     icon: {
         height: 25, 

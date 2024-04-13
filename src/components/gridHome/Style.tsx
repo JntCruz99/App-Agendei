@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     containerGrid: {
-        flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
         flexWrap: 'wrap',
@@ -31,5 +30,12 @@ export const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.3,
         shadowRadius: 2
+    },
+    imgContainerPress: {
+        backgroundColor: '#E1E5E4',
+        padding: 15,
+        borderRadius: 20,
+        
     }
+
 });

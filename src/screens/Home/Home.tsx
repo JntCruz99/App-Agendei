@@ -4,6 +4,7 @@ import Logo from '../../components/logoContainer/Logo';
 import styles from '../Home/Style'
 import InputHome from '../../components/inputHome/InputHome';
 import GridHome from '../../components/gridHome/GridHome';
+import Tabs from '../../components/tabs/Tabs';
 
 const Home = () => {
   return (
@@ -14,9 +15,9 @@ const Home = () => {
       <View style={styles.inputContainer}>
         <InputHome />
       </View>
-      <View>
+      
         <GridHome />
-      </View>
+      <Tabs></Tabs>
     </View>
   )
 }

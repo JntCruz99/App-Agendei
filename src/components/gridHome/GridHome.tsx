@@ -1,5 +1,5 @@
-import { View, Text, Image } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
+import { View, Text, Image, Pressable } from 'react-native';
 import MedicoIcon from '../../../assets/medicoIcon.png';
 import DentistaIcon from '../../../assets/dentistaIcon.png';
 import CabelereiroIcon from '../../../assets/cabelereiroIcon.png';
@@ -9,113 +9,64 @@ import PilatesIcon from '../../../assets/pilatesIcon.png';
 import ManicureIcon from '../../../assets/manicureIcon.png';
 import NutriIcon from '../../../assets/nutriIcon.png';
 import LavacarIcon from '../../../assets/lavacarIcon.png';
-import { styles } from './Style'
+import { styles } from './Style';
 
-
-const GridHome = () => {
-    return (
-        <View style={styles.containerGrid}>
-            <View style={styles.containerItem}>
-                <View style={styles.imgContainer}>
-                    <Image
-                        source={MedicoIcon}
-                        style={styles.img}
-                    />
-                </View>
-                <Text
-                    style={styles.text}
-                >Medico</Text>
-            </View>
-            <View style={styles.containerItem}>
-                <View style={styles.imgContainer}>
-                    <Image
-                        source={DentistaIcon}
-                        style={styles.img}
-                    />
-                </View>
-                <Text
-                    style={styles.text}
-                >Dentista</Text>
-            </View>
-            <View style={styles.containerItem}>
-                <View style={styles.imgContainer}>
-                    <Image
-                        source={CabelereiroIcon}
-                        style={styles.img}
-                    />
-                </View>
-                <Text
-                    style={styles.text}
-                >Cabelereiro</Text>
-            </View>
-            <View style={styles.containerItem}>
-                <View style={styles.imgContainer}>
-                    <Image
-                        source={PersonalIcon}
-                        style={styles.img}
-                    />
-                </View>
-                <Text
-                    style={styles.text}
-                >Personal</Text>
-            </View>
-            <View style={styles.containerItem}>
-                <View style={styles.imgContainer}>
-                    <Image
-                        source={PetshopIcon}
-                        style={styles.img}
-                    />
-                </View>
-                <Text
-                    style={styles.text}
-                >Petshop</Text>
-            </View>
-            <View style={styles.containerItem}>
-                <View style={styles.imgContainer}>
-                    <Image
-                        source={PilatesIcon}
-                        style={styles.img}
-                    />
-                </View>
-                <Text
-                    style={styles.text}
-                >Pilates</Text>
-            </View>
-            <View style={styles.containerItem}>
-                <View style={styles.imgContainer}>
-                    <Image
-                        source={ManicureIcon}
-                        style={styles.img}
-                    />
-                </View>
-                <Text
-                    style={styles.text}
-                >Manicure</Text>
-            </View>
-            <View style={styles.containerItem}>
-                <View style={styles.imgContainer}>
-                    <Image
-                        source={NutriIcon}
-                        style={styles.img}
-                    />
-                </View>
-                <Text
-                    style={styles.text}
-                >Nutricionista</Text>
-            </View>
-            <View style={styles.containerItem}>
-                <View style={styles.imgContainer}>
-                    <Image
-                        source={LavacarIcon}
-                        style={styles.img}
-                    />
-                </View>
-                <Text
-                    style={styles.text}
-                >LavarCar</Text>
-            </View>
-        </View>
-    )
+interface ButtonData {
+    id: string;
+    icon: any;
+    text: string;
+    isPressed: boolean;
 }
 
-export default GridHome
+const GridHome = () => {
+    const [buttonsData, setButtonsData] = useState<ButtonData[]>([
+        { id: 'medico', icon: MedicoIcon, text: 'Médico', isPressed: true },
+        { id: 'dentista', icon: DentistaIcon, text: 'Dentista', isPressed: true },
+        { id: 'cabelereiro', icon: CabelereiroIcon, text: 'Cabelereiro', isPressed: true },
+        { id: 'personal', icon: PersonalIcon, text: 'Personal', isPressed: true },
+        { id: 'petshop', icon: PetshopIcon, text: 'Petshop', isPressed: true },
+        { id: 'pilates', icon: PilatesIcon, text: 'Pilates', isPressed: true },
+        { id: 'manicure', icon: ManicureIcon, text: 'Manicure', isPressed: true },
+        { id: 'nutri', icon: NutriIcon, text: 'Nutricionista', isPressed: true },
+        { id: 'lavacar', icon: LavacarIcon, text: 'Lavacar', isPressed: true },
+
+    ]);
+
+    const handlePressIn = (id: string) => {
+        setButtonsData(prevButtons =>
+            prevButtons.map(button =>
+                button.id === id ? { ...button, isPressed: false } : button
+            )
+        );
+    };
+
+    const handlePressOut = (id: string) => {
+        setButtonsData(prevButtons =>
+            prevButtons.map(button =>
+                button.id === id ? { ...button, isPressed: true } : button
+            )
+        );
+    };
+
+    return (
+        <View style={styles.containerGrid}>
+            {buttonsData.map(button => (
+                <Pressable
+                    key={button.id}
+                    onPressIn={() => handlePressIn(button.id)}
+                    onPressOut={() => handlePressOut(button.id)}
+                    style={styles.containerItem}>
+                    <View style={button.isPressed ? styles.imgContainer : styles.imgContainerPress}>
+                        <Image
+                            source={button.icon}
+                            style={styles.img}
+                        />
+                    </View>
+                    <Text style={styles.text}>{button.text}</Text>
+                </Pressable>
+            ))}
+        </View>
+    );
+};
+
+export default GridHome;

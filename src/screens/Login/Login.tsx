@@ -20,7 +20,7 @@ export default function Home({ navigation }:any) {
             <View style={styles.footerContainer}>
                 <FooterLogin />
             </View>
-            <StatusBar style="light" />
+            <StatusBar style="dark" />
         </View>
     );
 }
