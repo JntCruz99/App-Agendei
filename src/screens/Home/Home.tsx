@@ -3,15 +3,19 @@ import React from 'react';
 import Logo from '../../components/logoContainer/Logo';
 import styles from '../Home/Style'
 import InputHome from '../../components/inputHome/InputHome';
+import GridHome from '../../components/gridHome/GridHome';
 
 const Home = () => {
   return (
     <View >
       <View style={styles.logoContainer}>
-            <Logo/>
+        <Logo />
       </View>
       <View style={styles.inputContainer}>
-            <InputHome/>
+        <InputHome />
+      </View>
+      <View>
+        <GridHome />
       </View>
     </View>
   )
